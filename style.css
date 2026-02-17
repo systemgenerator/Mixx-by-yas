@@ -45,29 +45,41 @@ h2 {
     margin: 10px 0 0;
 }
 
-/* Style for the phone number input */
-#phoneNumber {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 15px; /* Space below phone input */
-    border-radius: 10px;
+/* UPDATED: Your new styles for the phone input */
+.phone-input {
+    display: flex;
+    align-items: center;
     border: 1px solid #ccc;
-    font-size: 16px;
-    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 15px;
+    background: #fff;
 }
 
-/* Style for the PIN boxes container */
+.country-code {
+    font-weight: bold;
+    margin-right: 6px;
+    white-space: nowrap;
+}
+
+.phone-input input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+}
+
+/* Styles for the PIN boxes */
 .pin-boxes {
-    display: flex; /* Makes boxes horizontal */
-    justify-content: center; /* Centers the group of boxes */
-    gap: 10px; /* Space between the boxes */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
-/* Style for each PIN box */
 .pin-box {
-    width: 50px;        /* Width of the box */
-    height: 50px;       /* Height of the box (same as width to make it square) */
+    width: 50px;
+    height: 50px;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
