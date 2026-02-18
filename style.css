@@ -45,7 +45,6 @@ h2 {
     margin: 10px 0 0;
 }
 
-/* Your styles for the phone input */
 .phone-input {
     display: flex;
     align-items: center;
@@ -56,14 +55,7 @@ h2 {
     background: #fff;
 }
 
-/* UPDATED: Added the flag here */
-.country-code {
-    font-weight: bold;
-    margin-right: 6px;
-    white-space: nowrap;
-    content: "🇹🇿 +255"; /* ADDED: This adds the flag and code */
-    margin-right: 10px;      /* ADDED: Adjusted spacing */
-}
+/* REMOVED: .country-code style as it's no longer used */
 
 .phone-input input {
     border: none;
@@ -72,7 +64,6 @@ h2 {
     font-size: 16px;
 }
 
-/* Styles for the PIN boxes */
 .pin-boxes {
     display: flex;
     justify-content: center;
