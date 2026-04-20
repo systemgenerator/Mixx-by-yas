@@ -1,102 +1,64 @@
 body {
-    background: #f3f5f7;
+    background: #000000;
     font-family: Arial, sans-serif;
-    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
+    color: white;
+    margin: 0;
 }
 
-.card {
-    max-width: 400px;
+.container {
     width: 90%;
-    background: white;
+    max-width: 400px;
+    background: #1a1a1a;
     padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 15px;
     text-align: center;
+    border: 2px solid #d4af37; /* dark yellow */
 }
 
 h2 {
-    color: #143c7d;
-}
-
-.subtitle {
-    color: #555;
+    color: #d4af37;
     margin-bottom: 20px;
-}
-
-.amount-box {
-    background: #e9fbf4;
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-}
-
-.amount-box p {
-    margin: 0;
-    font-size: 14px;
-}
-
-.amount-box h1 {
-    color: #1a8f6b;
-    font-size: 32px;
-    margin: 10px 0 0;
-}
-
-.phone-input {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 8px;
-    margin-bottom: 15px;
-    background: #fff;
-}
-
-/* REMOVED: .country-code style as it's no longer used */
-
-.phone-input input {
-    border: none;
-    outline: none;
-    flex: 1;
-    font-size: 16px;
-}
-
-.pin-boxes {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.pin-box {
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
 }
 
-.pin-box:focus {
-    outline: none;
-    border-color: #143c7d;
-    box-shadow: 0 0 5px rgba(20, 60, 125, 0.5);
+label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+    font-size: 14px;
+    color: #d4af37;
+    font-weight: bold;
 }
 
-
-.note {
-    font-size: 12px;
-    color: #777;
-    margin-top: 15px;
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #d4af37;
+    background: #000000;
+    color: white;
+    font-size: 16px;
+    text-align: center;
 }
 
-footer {
-    font-size: 12px;
-    color: #aaa;
-    margin-top: 10px;
+button {
+    width: 100%;
+    background: #d4af37;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:disabled {
+    background: gray;
+    cursor: not-allowed;
 }
